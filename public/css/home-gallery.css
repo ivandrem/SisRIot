@@ -1,0 +1,40 @@
+body{background-color:#000;}
+#home-gallery{
+  margin-bottom:65px;
+}
+#home-gallery *{
+  cursor:default;
+}
+#home-gallery>div{
+  background-repeat:no-repeat;
+  background-position:center bottom;
+  background-size:100% auto;
+  height:290px;
+  filter:grayscale(100%);
+  transition:all 0.35s;
+}
+#home-gallery>div:hover{
+  filter:none;
+  transition:all 0.35s;
+}
+#home-gallery a{
+  cursor:pointer !important;
+}
+#home-gallery a:hover{
+  border:1px solid #dee2e6 !important;
+}
+#home-gallery>div .position-absolute{
+  width:100%;
+  bottom:0;
+  background-color:rgba(0,0,0,0.50);
+}
+@media(max-width:320px){
+  #home-gallery>div{
+    background-size:100% auto;
+  }
+}
+@media(max-width:576px){
+  #home-gallery>div{
+    height:190px;
+  }
+}
