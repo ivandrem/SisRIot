@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Plantas;
+use App\Planta;
 use Illuminate\Http\Request;
 
 class PlantasController extends Controller
@@ -19,10 +19,11 @@ public function __construct()
     }
 
 
-
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $plantas = Planta::paginate(15);;
+
+        return view('plantas.index', compact('plantas'));
     }
 
     /**
@@ -32,7 +33,7 @@ public function __construct()
      */
     public function create()
     {
-        //
+        return view('plantas.create');
     }
 
     /**
@@ -43,51 +44,39 @@ public function __construct()
      */
     public function store(Request $request)
     {
-        //
+        //**['variedad','Descripcion','total','estado','observaciones'];
+        $Planta = new Planta;
+        $Planta->fill($request->only('variedad', 'Descripcion', 'total', 'estado', 'observaciones'));
+        
+        $Planta->save();
+
+        session()->flash('message', '¡Planta registrada con éxito!');
+        return redirect()->route('plantas.index', compact('Planta'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Plantas  $plantas
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Plantas $plantas)
+    public function show(Planta $planta)
     {
-        //
+        return view('plantas.show', compact('planta'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Plantas  $plantas
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Plantas $plantas)
+    public function edit(Planta $planta)
     {
-        //
+        return view('plantas.edit', compact('planta'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Plantas  $plantas
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Plantas $plantas)
+    public function update(Request $request, Planta $planta)
     {
-        //
+        $planta->fill($request->only('variedad', 'Descripcion', 'total', 'estado', 'observaciones'));
+        $planta->save();
+
+        session()->flash('message', '¡Planta actualizada con éxito!');
+        return redirect()->route('plantas.index', compact('planta'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Plantas  $plantas
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Plantas $plantas)
+    public function destroy(Request $request, Planta $planta)
     {
-        //
+        $planta->delete();
+        session()->flash('message', '¡Planta eliminada con éxito!');
+        return redirect()->route('plantas.index');
     }
 }

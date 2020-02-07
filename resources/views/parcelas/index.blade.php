@@ -12,7 +12,6 @@
 	@include('layouts.includes.errors')
     @include('layouts.includes.messages')
 
-
 	<div class="float-right">
 		<a class="btn" href="">Recargar página</a>
 	</div>

@@ -56,7 +56,7 @@ Route::get('/{report}/pdf','UserController@report')->name('users.report');
 
 
 
-	Route::resource('/riego', 'RiegoController');
+	Route::resource('/riegos', 'RiegosController');
 
 
 
