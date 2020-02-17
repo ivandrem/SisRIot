@@ -11,6 +11,7 @@ class CreateParcelasTable extends Migration
      *
      * @return void
      */
+    
     public function up()
     {
         Schema::create('parcelas', function (Blueprint $table) {
@@ -20,10 +21,8 @@ class CreateParcelasTable extends Migration
             $table->foreign('variedad')->references('id')->on('plantas');
             $table->unsignedBigInteger('tipo');
             $table->foreign('tipo')->references('id')->on('riegos');
-
             $table->boolean('enabled')->default(true);
-            $table->string('name');
-
+            $table->string('name');}
             $table->timestamps();
 
         });

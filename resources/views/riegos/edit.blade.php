@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Actualizacion de Parcela')
+@section('title', 'Actualizacion de Riego')
 
 @section('content')
 	@component('layouts.components.breadcrumb', ['routes' => [
 			['href'=>route('home'), 'text'=>'Inicio'],
-			['href'=>route('parcelas.index'), 'text'=>'Parcelas'],
-			['href'=>route('parcelas.show',['parcela'=>$parcela]), 'text'=>$parcela->name],
-			['href'=>route('parcelas.edit',['parcela'=>$parcela]), 'text'=>'Actualización', 'active'=>true]
+			['href'=>route('riegos.index'), 'text'=>'Riegos'],
+			['href'=>route('riegos.show',['riego'=>$riego]), 'text'=>$riego->name],
+			['href'=>route('riegos.edit',['riego'=>$riego]), 'text'=>'Actualización', 'active'=>true]
 		]
 	])
 	@endcomponent
@@ -16,7 +16,7 @@
   	<div class="row mb-2">
 		<div class="col text-right">
 			<div class="btn-group mr-2" role="group" aria-label="">
-				<a href="{{ route('parcelas.edit',['parcela'=>$parcela]) }}" class="btn btn-secondary"><i class='fas fa-redo'></i></a>
+				<a href="{{ route('riegos.edit',['riego'=>$riego]) }}" class="btn btn-secondary"><i class='fas fa-redo'></i></a>
 			</div>
 
 
@@ -24,10 +24,10 @@
 
 
 
-			@can('parcelas.destroy')
+			@can('riegos.destroy')
 				<div class="btn-group" role="group" aria-label="">
-					<a class="btn btn-secondary" href="javascript:deleteParcela({{ $parcela->id }});"><i class='fas fa-trash'></i></a>
-					<form id="delete-parcela-{{ $parcela->id }}" method="POST" action="{{ route('parcelas.destroy',['parcela' => $parcela->id]) }}">
+					<a class="btn btn-secondary" href="javascript:deleteRiego({{ $riego->id }});"><i class='fas fa-trash'></i></a>
+					<form id="delete-riego-{{ $riego->id }}" method="POST" action="{{ route('riegos.destroy',['riego' => $riego->id]) }}">
 						@csrf
 						@method('DELETE')
 					</form>
@@ -35,9 +35,9 @@
 			@endcan
 		</div>
 	</div>
-   	@include('parcelas.includes.form', $parcela)
+   	@include('riegos.includes.form', $riego)
 @endsection
 
 @push('scripts')
-	@include('parcelas.includes.delete-parcela')
+	@include('riegos.includes.delete-riego')
 @endpush

@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Actualizacion de Parcela')
+@section('title', 'Actualizacion de riego')
 
 @section('content')
 	@component('layouts.components.breadcrumb', ['routes' => [
 			['href'=>route('home'), 'text'=>'Inicio'],
-			['href'=>route('parcelas.index'), 'text'=>'Parcelas'],
-			['href'=>route('parcelas.show',['parcela'=>$parcela]), 'text'=>$parcela->name, 'active'=>true]
+			['href'=>route('riegos.index'), 'text'=>'riegos'],
+			['href'=>route('riegos.show',['riego'=>$riego]), 'text'=>$riego->name, 'active'=>true]
 		]
 	])
 	@endcomponent
@@ -18,15 +18,15 @@
 <div class="row mb-2">
 		<div class="col text-right">
 		
-			@can('parcelas.edit')
+			@can('riegos.edit')
 				<div class="btn-group mr-2" role="group" aria-label="">
-					<a href="{{ route('parcelas.edit', ['parcela'=>$parcela->id]) }}" class="btn btn-secondary"><i class='fas fa-pencil-alt'></i></a>
+					<a href="{{ route('riegos.edit', ['riego'=>$riego->id]) }}" class="btn btn-secondary"><i class='fas fa-pencil-alt'></i></a>
 				</div>
 			@endcan
-			@can('parcelas.destroy')
+			@can('riegos.destroy')
 				<div class="btn-group" role="group" aria-label="">
-					<a class="btn btn-secondary" href="javascript:deleteParcela({{ $parcela->id }});"><i class='fas fa-trash'></i></a>
-					<form id="delete-parcela-{{ $parcela->id }}" method="POST" action="{{ route('parcelas.destroy', ['parcela'=>$parcela->id]) }}">
+					<a class="btn btn-secondary" href="javascript:deleteRiego({{ $riego->id }});"><i class='fas fa-trash'></i></a>
+					<form id="delete-riego-{{ $riego->id }}" method="POST" action="{{ route('riegos.destroy', ['riego'=>$riego->id]) }}">
 						@csrf
 						@method('DELETE')
 					</form>
@@ -35,48 +35,52 @@
 		</div>
 	</div>
 <hr>
-	<div class="row mb-2">
-		<div class="col-sm-2"><label class="font-weight-bold">Numero de parcela</label></div>
-		<div class="col-sm-10"><p>{{ $parcela->numero }}</p></div>
-	</div>
+
+<!--['nombre', 'tipo', 'descripcion', 'intervalo', 'tiempo','estado'];-->
 	<div class="row mb-2">
 		<div class="col-sm-2"><label class="font-weight-bold">Nombre</label></div>
-		<div class="col-sm-10"><p>{{ $parcela->name }}</p></div>
+		<div class="col-sm-10"><p>{{ $riego->nombre }}</p></div>
+	</div>
+	<div class="row mb-2">
+		<div class="col-sm-2"><label class="font-weight-bold">Tipo</label></div>
+		<div class="col-sm-10"><p>{{ $riego->tipo }}</p></div>
 	</div>
 <div class="row mb-2">
-		<div class="col-sm-2"><label class="font-weight-bold">Tipo</label></div>
-		<div class="col-sm-10"><p>{{ $parcela->tipo }}</p></div>
+		<div class="col-sm-2"><label class="font-weight-bold">Descripcion</label></div>
+		<div class="col-sm-10"><p>{{ $riego->descripcion }}</p></div>
 	</div>
 
 	<div class="row mb-2">
-		<div class="col-sm-2"><label class="font-weight-bold">Variedad</label></div>
-		<div class="col-sm-10"><p>{{ $parcela->variedad }}</p></div>
+		<div class="col-sm-2"><label class="font-weight-bold">Intervalo</label></div>
+		<div class="col-sm-10"><p>{{ $riego->intervalo }}</p></div>
 	</div>
 	
 	<div class="row mb-2">
-		<div class="col-sm-2"><label class="font-weight-bold">Habilitado</label></div>
-		<div class="col-sm-10"><p>{{ $parcela->enabled }}</p></div>
+		<div class="col-sm-2"><label class="font-weight-bold">Tiempo</label></div>
+		<div class="col-sm-10"><p>{{ $riego->tiempo }}</p></div>
+	</div>
+
+	<div class="row mb-2">
+		<div class="col-sm-2"><label class="font-weight-bold">Estado</label></div>
+		<div class="col-sm-10"><p>{{ $riego->estado}}</p></div>
 	</div>
 
 	<div class="row mb-2">
 		<div class="col-sm-2"><label class="font-weight-bold">Fecha creado</label></div>
-		<div class="col-sm-10"><p>{{ $parcela->created_at ?: '...'}}</p></div>
+		<div class="col-sm-10"><p>{{ $riego->created_at ?: '...'}}</p></div>
 	</div>
 
-	<div class="row mb-2">
-		<div class="col-sm-2"><label class="font-weight-bold">Fecha Actualizacion</label></div>
-		<div class="col-sm-10"><p>{{ $parcela->updated_at ?: '...'  }}</p></div>
-	</div>
+
 
 	<hr>
 	<div class="row mb-2">
 		<div class="col text-right">
-			<a href="{{ route('parcelas.show', ['parcela'=>$parcela->id]) }}" class="btn btn-link">Recargar página</a>
+			<a href="{{ route('riegos.show', ['riego'=>$riego->id]) }}" class="btn btn-link">Recargar página</a>
 		</div>
 	</div>
 @endsection
 
 @push('scripts')
-	@include('parcelas.includes.delete-parcela')
+	@include('riegos.includes.delete-riego')
 
 @endpush
