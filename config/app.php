@@ -228,8 +228,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         //'PDF' => niklasravnsborg\LaravelPdf\Fachadas\Pdf::clase,
-        'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\HtmlFacade::class,
+
     ],
 
 ];

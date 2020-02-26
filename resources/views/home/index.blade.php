@@ -30,26 +30,26 @@
         <a class="btn text-light" href="/plantas">Ir al módulo</a>
       </div>
     </div>
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="background-image: url('{{ asset('images/home/slide-04.jpg') }}');">
+    <!--div class="col-12 col-sm-6 col-md-4 col-lg-3" style="background-image: url('{{ asset('images/home/slide-04.jpg') }}');">
       <div class="position-absolute p-3">
         <h3 class="text-white">Monitoreo</h3>
         <a class="btn text-light" href="/monitoreo">Ir al módulo</a>
       </div>
-    </div>
+    </div-->
     <!--div class="col-12 col-sm-6 col-md-4 col-lg-3" style="background-image: url('{{ asset('images/home/slide-05.jpg') }}');">
       <div class="position-absolute p-3">
         <h3 class="text-white">Dispositivos</h3>
         <a class="btn text-light" href="/dispositivos">Ir al módulo</a>
       </div>
     </div-->
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="background-image: url('{{ asset('images/home/slide-06.jpg') }}');">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-6" style="background-image: url('{{ asset('images/home/slide-06.jpg') }}');">
       <div class="position-absolute p-3">
         <img src="{{ asset('images/auth.png') }}" class="float-right" style="height:70px;">
         <h3 class="text-white">Usuarios</h3>
         <a class="btn text-light" href="{{ route('users.index') }}">Ir al módulo</a>
       </div>
     </div>
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="background-image: url('{{ asset('images/home/slide-07.jpg') }}');">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-6" style="background-image: url('{{ asset('images/home/slide-07.jpg') }}');">
       <div class="position-absolute p-3">
         <img src="{{ asset('images/roles.png') }}" class="float-right" style="height:70px;">
         <h3 class="text-white">Roles</h3>
